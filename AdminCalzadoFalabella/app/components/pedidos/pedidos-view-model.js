@@ -5,12 +5,16 @@ var ViewModel,
 
 ViewModel = new Observable({
 
-    pageTitle: 'Home View',
+    pageTitle: 'Pedidos',
+
+    isLoading: false,
+    listItems: [],
     // additional properties
+
 });
 
-// START_CUSTOM_CODE_homeView
+// START_CUSTOM_CODE_pedidos
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
-// END_CUSTOM_CODE_homeView
+// END_CUSTOM_CODE_pedidos
 module.exports = ViewModel;

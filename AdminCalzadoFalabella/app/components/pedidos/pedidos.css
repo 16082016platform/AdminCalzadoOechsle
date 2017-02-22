@@ -1,0 +1,16 @@
+@keyframes play {
+    from {
+        background-color: white;
+    }
+    50% {
+        background-color: red;
+    }
+    to {
+        background-color: white;
+    }
+}
+
+.animacion {
+    animation-name: play;
+    animation-duration: 5;
+}

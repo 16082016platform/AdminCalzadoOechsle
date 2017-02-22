@@ -84,6 +84,7 @@ switch {
 .title-label {
     padding: 0 0 12 0;
     font-weight: bold;
+    font-size: 50;
 }
 
 .about-image {
@@ -154,3 +155,12 @@ switch {
 
 
 /* END_CUSTOM_CODE_nativeScriptApp */
+
+
+.colorProducto {
+    width: 50;
+    height: 50;
+    border-width: 1;
+    border-color: white;
+    border-radius: 100;
+}

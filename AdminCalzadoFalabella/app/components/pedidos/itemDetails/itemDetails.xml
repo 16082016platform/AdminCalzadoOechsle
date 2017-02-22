@@ -1,0 +1,30 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" navigatedTo="navigatedTo" id="pedidosModelDetailsScreen" cssClass="screen">
+    <Page.actionBar>
+        <widgets:action-bar />
+    </Page.actionBar>
+
+    <ScrollView>
+        <StackLayout>
+
+            <GridLayout rows="auto, *">
+                <GridLayout rows="auto" columns="*, *">
+
+                    <widgets:button text="Edit" tap="onEditItemTap" />
+
+
+                </GridLayout>
+                <StackLayout row="1">
+
+
+                    <Label text="{{ color }}" />
+
+
+                    <TextView text="{{ nombreColor }}" />
+
+                    <!-- additional view content -->
+                </StackLayout>
+            </GridLayout>
+
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -3,14 +3,68 @@
   "views": [
     {
       "type": "NativeScript:view",
-      "name": "homeView",
-      "components": [],
-      "title": "Home View",
+      "name": "pedidos",
+      "components": [
+        {
+          "type": "NativeScript:editableList",
+          "serverSideSorting": false,
+          "serverSidePaging": false,
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "addScreenExtraFields": [],
+          "editScreenExtraFields": [],
+          "components": [
+            {
+              "type": "NativeScript:editableListForm",
+              "components": [
+                {
+                  "type": "NativeScript:editableListFormField",
+                  "name": "estado",
+                  "title": "Estado",
+                  "inputType": "text",
+                  "titlePosition": "top",
+                  "inputTextType": "text",
+                  "dataBinding": "estado"
+                }
+              ],
+              "name": "editableListForm2",
+              "formType": "edit"
+            }
+          ],
+          "name": "pedidosModel",
+          "dataProvider": "backendServices",
+          "collection": "pedidos",
+          "headerField": "color",
+          "subHeaderField": "nombreColor",
+          "isMapView": false,
+          "addItemForm": false,
+          "editItemForm": true,
+          "editScreenHeaderSource": "static",
+          "editScreenHeaderValue": "Edit",
+          "deleteItemButton": false,
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "detailHeaderFieldSource": "static",
+          "detailHeaderFieldValue": "Detail",
+          "detailSubHeaderField": "color",
+          "detailDescriptionField": "nombreColor"
+        }
+      ],
+      "title": "Pedidos",
       "addToNavigation": true,
-      "icon": "home"
+      "icon": "favorites"
     }
   ],
-  "dataProviders": [],
+  "dataProviders": [
+    {
+      "type": "NativeScript:dataProvider",
+      "name": "backendServices",
+      "source": "everlive",
+      "everliveKey": "5f12djusm0e26jin",
+      "offlineStorage": true,
+      "title": "Backend Services"
+    }
+  ],
   "name": "nativeScriptApp",
   "navigation": "listmenu",
   "transition": "none",
