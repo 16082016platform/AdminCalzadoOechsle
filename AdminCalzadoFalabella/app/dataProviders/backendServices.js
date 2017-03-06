@@ -5,7 +5,8 @@ provider = new TelerikBackendServices({
 
     offlineStorage: true,
 
-    appId: '5f12djusm0e26jin',
+    // appId: 'oxy6r6x1ak0jq27m',
+    appId: 'zqjwonr6y522c6ca',
     scheme: 'https'
 });
 

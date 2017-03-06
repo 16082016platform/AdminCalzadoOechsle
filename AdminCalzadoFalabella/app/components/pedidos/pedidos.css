@@ -14,3 +14,17 @@
     animation-name: play;
     animation-duration: 5;
 }
+
+.labelAtendido {
+    padding: 0 0 12 0;
+    font-weight: bold;
+    font-size: 50;
+    color:green;
+}
+
+.labelPendiente{
+    padding: 0 0 12 0;
+    font-weight: bold;
+    font-size: 50;
+    color:red;
+}

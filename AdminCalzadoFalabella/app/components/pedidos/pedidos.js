@@ -12,20 +12,27 @@ var sound = require("nativescript-sound");
 
 var audio = sound.create("~/sounds/assiduous.mp3"); // preload the audio file
 function onListViewItemTap(args) {
-    audio.play();
-    var page = args.object;
-    page.cssClass = "animacion";
-
-    var itemData = viewModel.get('listItems')[page.index];
-
-    // helpers.navigate({
-    //     moduleName: 'components/pedidos/itemDetails/itemDetails',
-    //     context: itemData.details
-    // });
-
-    if (itemData.details.estado == "Atendido") {
+    var itemData = args.object;
+    if (itemData.estado == "Atendido") {
         return;
+    } else {
+        try {
+            itemData.cssClass = "";
+            page.getViewById("estado" + itemData.indice).text = "Atendido";
+            page.getViewById("estado" + itemData.indice).cssClass = "labelAtendido";
+        }
+        catch (err) {
+            // alert(err);
+            return;
+        }
     }
+    // if (page.getViewById("estado" + itemData.indice).text  == "Atendido") {
+    //     return;
+    // }else{
+    //     page.getViewById("estado" + itemData.indice).text = "Atendido";
+    //     page.getViewById("estado" + itemData.indice).color = "green";
+    //     itemData.cssClass="";
+    // }
 
     var dataService = require('../../dataProviders/backendServices');
 
@@ -37,10 +44,13 @@ function onListViewItemTap(args) {
 
         // save properties
 
-        Id: itemData.details.Id
+        Id: itemData.id
     })
-        .then(page.getViewById("estado" + itemData.index).text = "Atendido", page.getViewById("estado" + itemData.index).color = "green")
-        .catch(page.getViewById("estado" + itemData.index).text = "Atendido", page.getViewById("estado" + itemData.index).color = "green");
+        .then(c = 0)
+        .catch();
+
+    // .then(page.getViewById("estado" + itemData.indice).text = "Atendido", page.getViewById("estado" + itemData.indice).color = "green")
+    // .catch(page.getViewById("estado" + itemData.indice).text = "Atendido", page.getViewById("estado" + itemData.indice).color = "green");
 
 
 }
@@ -73,23 +83,25 @@ function timedCount() {
 
 
 
-
-    
     function _fetchData() {
-        
+
         return service.getAllRecords();
     };
     _fetchData()
         .then(function (result) {
-            
+
             var itemsList = [];
             var index = 0;
             result.forEach(function (item) {
-                
+                if (item.estado == "Pendiente") { audio.play(); }
                 itemsList.push({
-                    header: item.estado,
+                    estado: item.estado,
                     description: item.producto,
-                    color: item.estado == "Pendiente" ? "red" : "green",
+                    colorVisible: item.nombreColor == "" ? "collapsed" : "visible",
+                    codigo: item.Id.substr(0, 6),
+                    clase: item.estado == "Pendiente" ? "labelPendiente" : "labelAtendido",
+                    activado: item.estado == "Pendiente" ? true : false,
+                    animacion: item.estado == "Pendiente" ? "animacion" : "",
                     index: index,
                     // singleItem properties
                     details: item
@@ -106,14 +118,14 @@ function timedCount() {
 
 
 
-    t = setTimeout(function () { timedCount() }, 5000);
+    t = setTimeout(function () { timedCount() }, 10000);
 
-    
+
     // if (c == 5) {
     //     stopCount();
     // }
 
-    
+
 }
 
 function startCount() {
@@ -129,9 +141,9 @@ function stopCount() {
     c = 0;
 }
 
-
+var page;
 function pageLoaded(args) {
-    var page = args.object;
+    page = args.object;
     helpers.platformInit(page);
     page.bindingContext = viewModel;
     // viewModel.set('isLoading', true);

@@ -1,7 +1,12 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" loaded="pageLoaded" id="pedidosScreen" cssClass="screen">
-    <Page.actionBar>
-        <widgets:action-bar />
-    </Page.actionBar>
+    <ActionBar>
+        <ActionBar.titleView>
+            <GridLayout columns="auto, 5, *">
+            <Image src="~/images/logo.png" width="70" height="70"  />
+            <Label col="2" text="Pedidos" minWidth="100" />
+            </GridLayout>
+        </ActionBar.titleView> 
+    </ActionBar>
 
     <StackLayout>
 
@@ -9,21 +14,23 @@
 
             <ListView row="1" items="{{ listItems }}">
                 <ListView.itemTemplate>
-                    <StackLayout doubletap="onListViewItemTap" index="{{ index }}">
+                    <StackLayout indice="{{ index }}" id="{{ details.Id }}"  cssClass="{{ animacion }}" estado="{{ estado }}" tap="onListViewItemTap" isEnabled="{{ activado }}" >
                         <GridLayout columns="auto,*,auto" cssClass="padded-label">
 
                             <StackLayout col="0" cssClass="padded-label-stack">
-                                <Label id="{{'estado'+index}}" text="{{ header }}" cssClass="title-label" color="{{ color }}" textWrap="true" />
+                                <Label id="{{'estado'+index}}" text="{{ estado }}" cssClass="{{ clase }}"  textWrap="true" />
                             </StackLayout>
 
                             <StackLayout col="1" cssClass="padded-label-stack">
-                                <Label text="{{ 'Código: ' + details.productoExpand.codigo }}" cssClass="title-label" textWrap="true" />
-                                <Label text="{{ details.productoExpand.nombre }}" style.fontSize="30" textWrap="true" />
+                                <!--details.productoExpand.codigo-->
+                                <Label text="{{ 'Código: ' + codigo }}" cssClass="title-label" textWrap="true" />
+                                <!--details.productoExpand.nombre-->
+                                <Label text="{{ details.nombre }}" style.fontSize="30" textWrap="true" />
                             </StackLayout>
 
                             <WrapLayout col="2" cssClass="padded-label-stack">
                                 <Label text="{{ details.talla }}" cssClass="title-label" textWrap="true" />
-                                <Button text="." margin="10" color="{{ '#'+details.color }}" backgroundColor="{{ '#'+details.color }}" cssClass="colorProducto" />
+                                <Button text="." margin="10" color="{{ '#'+details.color }}" backgroundColor="{{ '#'+details.color }}" cssClass="colorProducto" visibility="{{ colorVisible }}" />
                                 <Label text="{{ details.nombreColor }}" cssClass="title-label" textWrap="true" />
                             </WrapLayout>
 
