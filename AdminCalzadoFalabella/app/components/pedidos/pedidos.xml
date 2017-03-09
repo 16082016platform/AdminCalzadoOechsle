@@ -3,7 +3,7 @@
         <ActionBar.titleView>
             <GridLayout columns="auto, 5, *">
             <Image src="~/images/logo.png" width="70" height="70"  />
-            <Label col="2" text="Pedidos" minWidth="100" />
+            <Label col="2" text="Pedidos" />
             </GridLayout>
         </ActionBar.titleView> 
     </ActionBar>
@@ -15,23 +15,23 @@
             <ListView row="1" items="{{ listItems }}">
                 <ListView.itemTemplate>
                     <StackLayout indice="{{ index }}" id="{{ details.Id }}"  cssClass="{{ animacion }}" estado="{{ estado }}" tap="onListViewItemTap" isEnabled="{{ activado }}" >
-                        <GridLayout columns="auto,*,auto" cssClass="padded-label">
+                        <GridLayout columns="auto,*,auto">
 
-                            <StackLayout col="0" cssClass="padded-label-stack">
+                            <StackLayout col="0">
                                 <Label id="{{'estado'+index}}" text="{{ estado }}" cssClass="{{ clase }}"  textWrap="true" />
                             </StackLayout>
 
-                            <StackLayout col="1" cssClass="padded-label-stack">
+                            <StackLayout col="1">
                                 <!--details.productoExpand.codigo-->
-                                <Label text="{{ 'Código: ' + codigo }}" cssClass="title-label" textWrap="true" />
+                                <Label text="{{ 'Código: ' + codigo }}" textWrap="true" />
                                 <!--details.productoExpand.nombre-->
-                                <Label text="{{ details.nombre }}" style.fontSize="30" textWrap="true" />
+                                <Label text="{{ details.nombre }}" textWrap="true" />
                             </StackLayout>
 
                             <WrapLayout col="2" cssClass="padded-label-stack">
-                                <Label text="{{ details.talla }}" cssClass="title-label" textWrap="true" />
+                                <Label text="{{ details.talla + ' - '}}"  textWrap="true" />
+                                <Label text="{{ details.nombreColor }}" textWrap="true" />
                                 <Button text="." margin="10" color="{{ '#'+details.color }}" backgroundColor="{{ '#'+details.color }}" cssClass="colorProducto" visibility="{{ colorVisible }}" />
-                                <Label text="{{ details.nombreColor }}" cssClass="title-label" textWrap="true" />
                             </WrapLayout>
 
                         </GridLayout>

@@ -8,9 +8,15 @@ var isInit = true,
 
     viewModel = require('./pedidos-view-model');
 
-var sound = require("nativescript-sound");
+try {
+    var sound = require("nativescript-sound");
+    var audio = sound.create("~/sounds/assiduous.mp3"); // preload the audio file
+}
+catch (err) {
+    alert("Esta app es un demo, desabilitamos la función del sonido");
+}
 
-var audio = sound.create("~/sounds/assiduous.mp3"); // preload the audio file
+
 function onListViewItemTap(args) {
     var itemData = args.object;
     if (itemData.estado == "Atendido") {
@@ -93,7 +99,13 @@ function timedCount() {
             var itemsList = [];
             var index = 0;
             result.forEach(function (item) {
-                if (item.estado == "Pendiente") { audio.play(); }
+                try {
+                    if (item.estado == "Pendiente") { audio.play(); }
+                }
+                catch (err) {
+                    // alert("Esta app es un demo, desabilitamos la función del sonido");
+                }
+
                 itemsList.push({
                     estado: item.estado,
                     description: item.producto,
