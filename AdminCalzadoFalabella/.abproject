@@ -2,10 +2,10 @@
   "ProjectName": "AdminCalzadoFalabella",
   "ProjectGuid": "0bd98e18-63c2-4524-a62e-ab7130f99efc",
   "projectVersion": 1,
-  "AppIdentifier": "com.telerik.AdminCalzadoFalabella",
-  "DisplayName": "AdminCalzadoFalabella",
-  "Author": "",
-  "Description": "AdminCalzadoFalabella",
+  "AppIdentifier": "com.telerik.AdminOechsle",
+  "DisplayName": "AdminOechsle",
+  "Author": "Letrecorp SA",
+  "Description": "Para almacén pedidos de calzado en Oechsle",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
@@ -15,7 +15,8 @@
   "iOSBackgroundMode": [],
   "ProjectTypeGuids": "{F0A65104-D4F4-4012-B799-F612D75820F6}",
   "AndroidPermissions": [
-    "android.permission.INTERNET"
+    "android.permission.INTERNET",
+    "android.permission.RECEIVE_BOOT_COMPLETED"
   ],
   "DeviceOrientations": [
     "Portrait",
